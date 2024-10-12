@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from '../models/usuario';
 import Swal from 'sweetalert2';
 import { MatDialogRef } from '@angular/material/dialog';
+import { AuthService } from '../../shared/services/auth.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class FormLoginComponent {
 
   usuario: Usuario = new Usuario();
 
-  constructor(private formBuilder: FormBuilder, private dialogLoginFormRef: MatDialogRef<FormLoginComponent>){
+  constructor(private authService: AuthService, private formBuilder: FormBuilder, private dialogLoginFormRef: MatDialogRef<FormLoginComponent>){
     this.loginForm = formBuilder.group({
       username: ['',Validators.required],
       password: ['',Validators.required]
@@ -25,6 +26,11 @@ export class FormLoginComponent {
   onLogin(): void {
     this.usuario.username = this.loginForm.get('username')?.value;
     this.usuario.password = this.loginForm.get('password')?.value;
+    
+    this.authService.login(this.usuario).subscribe(response => {
+      this.authService.saveToken(response.token);
+    });
+
     if(this.usuario.username === 'etumax' && this.usuario.password === 'Guatemala'){
       Swal.fire({
         title: "Login",
