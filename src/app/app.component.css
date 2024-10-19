@@ -5,5 +5,11 @@ h1 {
     padding-top: 20px;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
 
-
+.form-container > * {
+    width: 100%;
+}

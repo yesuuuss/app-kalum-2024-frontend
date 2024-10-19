@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Usuario } from '../models/usuario';
 import Swal from 'sweetalert2';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AuthService } from '../../shared/services/auth.service';
+import { FormRegisterComponent } from './form-register.component';
 
 
 @Component({
@@ -16,22 +17,20 @@ export class FormLoginComponent {
 
   usuario: Usuario = new Usuario();
 
-  constructor(private authService: AuthService, private formBuilder: FormBuilder, private dialogLoginFormRef: MatDialogRef<FormLoginComponent>){
+  constructor(private dialogFormRegister: MatDialog, private authService: AuthService, private formBuilder: FormBuilder, private dialogLoginFormRef: MatDialogRef<FormLoginComponent>){
     this.loginForm = formBuilder.group({
-      username: ['',Validators.required],
-      password: ['',Validators.required]
+      username: ['etumax',Validators.required],
+      password: ['Inicio.2024',Validators.required]
     });
   }
 
   onLogin(): void {
     this.usuario.username = this.loginForm.get('username')?.value;
-    this.usuario.password = this.loginForm.get('password')?.value;
-    
+    this.usuario.password = this.loginForm.get('password')?.value;    
     this.authService.login(this.usuario).subscribe(response => {
       this.authService.saveToken(response.token);
-    });
-
-    if(this.usuario.username === 'etumax' && this.usuario.password === 'Guatemala'){
+      this.authService.saveUser(this.authService.getToken(this.authService.token));
+      console.log(this.authService.isAuthenticated());
       Swal.fire({
         title: "Login",
         text: `Bienvenido a KalumApp ${this.usuario.username}`,
@@ -41,19 +40,18 @@ export class FormLoginComponent {
         if(response.isConfirmed){
           this.dialogLoginFormRef.close(1);
         }
-      });
-    } else {
-      Swal.fire({
-        title: "Login",
-        text: `Credenciales incorrectas, favor de validar de nuevo`,
-        icon: "error",
-        footer: "Kalum v1.0.0"
-      })
-    }
+      });      
+    });
   }
 
   onCancel(): void{
     this.dialogLoginFormRef.close(0);
+  }
+
+  openFormRegister(): void{
+    const dialogFormRegisterRef = 
+      this.dialogFormRegister.open(FormRegisterComponent, {width: '450px'});
+    this.dialogLoginFormRef.close(2);
   }
   
 
