@@ -1,0 +1,66 @@
+<mat-card>
+    <h2 class="alinear">Listado de carreras técnicas</h2>
+    <mat-card-header>
+        <div>
+            <mat-form-field hintLabel="Buscar categoria" appearance="fill">
+                <mat-label>Buscar carrera</mat-label>
+                <input matInput #input>
+            </mat-form-field>
+        </div>
+    </mat-card-header>
+    <mat-card-header>
+        <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+            <ul fxLayout="row" fxLayoutGap="20px">
+                <li>
+                    <button mat-raised-button color="primary">Agregar carrera</button>
+                </li>
+            </ul>
+        </div>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table class="mat-cell" [dataSource]="dataSource">            
+            <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+
+            <ng-container matColumnDef="number">
+                <th class="text-center" mat-header-cell *matHeaderCellDef>No.</th>
+                <td class="text-center" mat-cell *matCellDef="let elemento">
+                    <ng-container *ngIf="elemento">
+                        {{elemento.number}}
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="carrera">
+                <th class="text-center" mat-header-cell *matHeaderCellDef>CARRERA TÉCNICA</th>
+                <td class="text-center" mat-cell *matCellDef="let elemento">
+                    <ng-container *ngIf="elemento">
+                        {{elemento.nombre}}
+                    </ng-container>
+                </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acciones">
+                <th class="text-center" mat-header-cell *matHeaderCellDef>Acciones</th>
+                <td mat-cell *matCellDef="let elemento; let i=index;">
+                    <button mat-icon-button color="accent">
+                        <mat-icon aria-label="Edit">
+                            edit
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent">
+                        <mat-icon aria-label="Delete">
+                            delete
+                        </mat-icon>
+                    </button>
+                    <button mat-icon-button color="accent">
+                        <mat-icon aria-label="Asignar">
+                            assignment
+                        </mat-icon>
+                    </button>
+                </td>
+            </ng-container>        
+        </table>
+        <mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLastButtons></mat-paginator>
+    </mat-card-content>
+</mat-card>

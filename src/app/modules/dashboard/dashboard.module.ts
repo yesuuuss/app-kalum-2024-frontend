@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { MaterialModule } from '../shared/material.module';
 import { UsuarioModule } from '../usuario/usuario.module';
+import { CarreraTecnicaModule } from '../carrera-tecnica/carrera-tecnica.module';
 
 
 
@@ -19,7 +20,8 @@ import { UsuarioModule } from '../usuario/usuario.module';
     RouterModule,
     SharedModule,
     MaterialModule, 
-    UsuarioModule
+    UsuarioModule,
+    CarreraTecnicaModule
   ]
 })
 export class DashboardModule { }
