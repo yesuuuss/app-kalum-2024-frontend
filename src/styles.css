@@ -24,3 +24,12 @@ ul li {
 mat-form-field {
     width: 140%;
 }
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container > * {
+    width: 100%;
+}

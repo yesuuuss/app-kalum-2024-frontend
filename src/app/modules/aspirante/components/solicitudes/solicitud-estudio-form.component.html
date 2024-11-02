@@ -1,0 +1,76 @@
+<h2 mat-dialog-title>
+   Solcitud de estudios 
+</h2>
+<mat-dialog-content>
+    <form>
+        <div class="form-container">
+            <mat-form-field>
+                <input matInput placeholder="Apellidos" required>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <input matInput placeholder="Nombres" required>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <input matInput type="email" placeholder="Email" required>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <input matInput placeholder="Telefono" required>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <input matInput placeholder="Direccion" required>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <mat-label>
+                    Carrera Técnica
+                </mat-label>
+                <mat-select>
+                    <mat-option>
+                        SELECCIONAR
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <mat-label>
+                    Jornada
+                </mat-label>
+                <mat-select>
+                    <mat-option>
+                        SELECCIONAR
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-container">
+            <mat-form-field>
+                <mat-label>
+                    Fecha Examen
+                </mat-label>
+                <mat-select>
+                    <mat-option>
+                        SELECCIONAR
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </form>
+    <mat-dialog-actions>
+        <button mat-button color="primary">
+            <mat-icon>save</mat-icon> Enviar
+        </button>
+        <button mat-button color="primary">
+            <mat-icon>cancel</mat-icon> Cancelar
+        </button>
+    </mat-dialog-actions>
+</mat-dialog-content>
