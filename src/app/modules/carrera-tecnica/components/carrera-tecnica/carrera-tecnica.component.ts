@@ -70,12 +70,21 @@ export class CarreraTecnicaComponent implements OnInit {
   }
 
   getOpenFormCarreraTecnica() : void {
-    this.dialogForm.open(CarreraTecnicaFormComponent, {width: '450px'});
+    this.dialogForm.open(CarreraTecnicaFormComponent, {width: '450px'}).afterClosed().subscribe(result => {
+      if(result == 1){
+        this.getCarrerasTecnicas();
+      }
+    });;
+    
   }
 
-
   editCarreraTecnica(carreraId: string, carrera: string): void {
-    this.dialogForm.open(CarreraTecnicaFormComponent, {width: '450px', data: {carreraId: carreraId, carrera: carrera}});
+    this.dialogForm.open(CarreraTecnicaFormComponent, {width: '450px', data: {carreraId: carreraId, carrera: carrera}})
+      .afterClosed().subscribe(result => {
+        if(result == 1){
+          this.getCarrerasTecnicas();
+        }
+      });
   }
 
 
