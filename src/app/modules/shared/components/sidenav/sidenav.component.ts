@@ -14,10 +14,14 @@ export class SidenavComponent {
 
   mobileQuery: MediaQueryList;
 
-  manuNav = [
+  menuNav = [
     {name:'Home', route: 'home', icon:'home'},
-    {name:'Carreras', route: 'home', icon:'category'},
-    {name:'Examenes', route: 'home', icon:'calendar_today'}
+    {name:'Carreras', route: 'carreras', icon:'category'},
+    {name:'Examenes', route: 'home', icon:'calendar_today'},
+    {name:'Jornadas', route: 'home', icon:'calendar_today'},
+    {name:'Notas', route: 'home', icon:'calendar_today'},
+    {name:'Asignaciones', route: 'home', icon:'calendar_today'},
+    {name:'Cargos', route: 'home', icon:'calendar_today'}
   ];
 
   constructor(media: MediaMatcher, public dialog: MatDialog, public authService: AuthService) {
