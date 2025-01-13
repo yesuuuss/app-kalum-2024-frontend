@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <mat-divider></mat-divider>
-                <a mat-list-item *ngFor="let menu of manuNav">
+                <a mat-list-item [routerLink]="menu.route"  *ngFor="let menu of menuNav">
                     <mat-icon class="icono">
                         {{menu.icon}}
                     </mat-icon>
