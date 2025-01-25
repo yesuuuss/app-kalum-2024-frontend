@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled sorted 
+119cac6bd339e993e1c9d9bfddd985156e945a0f refs/heads/dev
+7d59c8e648ee63b00fd71df0683e55350cfc7034 refs/heads/feature/carreras-tecnicas
+119cac6bd339e993e1c9d9bfddd985156e945a0f refs/heads/feature/iniciar-sesion
+5755a183c19690b67474ea1c442470d05897ce10 refs/heads/master
